@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Cadastrar Aluno</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:graphicImage url="/resources/images/logo.png"
+			style="position: absolute;z-index: 2;top:10px;left:50px;width:300px; height:100px;" />
+		<h:graphicImage url="/resources/images/top.png"
+			style="width:100%; height:120px;z-index: 1;" />
+		<p:menubar>
+			<p:submenu label="Unidade">
+				<p:menuitem value="Cadastrar" url="cadastrarUnidade.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarUnidade.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Instrutor">
+				<p:menuitem value="Cadastrar" url="cadastrarInstrutor.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarInstrutor.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Modalidade">
+				<p:menuitem value="Cadastrar" url="cadastrarModalidade.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarModalidade.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Aluno">
+				<p:menuitem value="Cadastrar" url="cadastrarAluno.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarAluno.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Usuário">
+				<p:menuitem value="Cadastrar" url="cadastrarUsuario.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarUsuario.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Pagamento">
+				<p:menuitem value="Novo Pagamento" url="cadastrarPagamento.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Despesa">
+				<p:menuitem value="Cadastrar" url="cadastrarDespesa.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarDespesa.xhtml" />
+			</p:submenu>
+
+
+			<p:submenu label="Relatórios do Sistema">
+				<p:submenu label="Alunos">
+					<p:menuitem value="Por Modalidade"
+						url="relatorioAlunoModalidade.xhtml" />
+					<p:menuitem value="Por Tempo de Academia"
+						url="relatorioAlunoTempo.xhtml" />
+					<p:menuitem value="Com Avaliação Física"
+						url="#{aluno.gerarComAvaliacao()}" />
+					<p:menuitem value="Sem Avaliação Física"
+						url="#{aluno.gerarSemAvaliacao()}" />
+
+				</p:submenu>
+				<p:submenu label="Instrutores">
+					<p:menuitem value="Por Salário"
+						url="#{instrutor.gerarInstrutor()}" />
+
+				</p:submenu>
+
+				<p:submenu label="Modalidades">
+					<p:menuitem value="Por Valor"
+						url="#{modalidade.gerarModalidade()}" />
+				</p:submenu>
+
+				<p:submenu label="Gastos">
+					<p:menuitem value="Por Período de Tempo"
+						url="relatorioGastos.xhtml" />
+
+
+				</p:submenu>
+			</p:submenu>
+
+
+
+			<p:menuitem value="Histórico do Sistema" url="listarAcesso.xhtml" />
+			<p:menuitem value="Sair" url="login.xhtml" />
+
+		</p:menubar>
+
+		<br />
+		<p:panel id="cadastrarAluno" header="Cadastrar Aluno"
+			style="margin-bottom:20px">
+			<p:outputLabel value="Nome: *" />
+			<br />
+			<p:inputText id="nome" value="#{aluno.aluno.nome}" style="width:70%;"
+				required="true" requiredMessage="O campo nome é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Cpf: *" />
+			<br />
+			<p:inputText id="cpf" value="#{aluno.aluno.cpf}" style="width:70%;"
+				required="true" requiredMessage="O campo cpf é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Identidade: *" />
+			<br />
+			<p:inputText id="identidade" value="#{aluno.aluno.identidade}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo identidade é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Data de Nascimento: *" />
+			<br />
+			<p:calendar pattern="dd/MM/yyyy" locale="pt" id="popupDataNasc"
+				value="#{aluno.aluno.dataNascimento}" style="width:70%;"
+				required="true"
+				requiredMessage="O campo data de nascimento é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Estado Civil: *" />
+			<br />
+			<p:inputText id="estCivil" value="#{aluno.aluno.estadoCivil}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo estado civil é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Sexo: *" />
+			<br />
+			<h:selectOneMenu value="#{aluno.aluno.sexo}" required="true"
+				requiredMessage="O campo sexo é obrigatório.">
+				<f:selectItem itemValue="M" itemLabel="M" />
+				<f:selectItem itemValue="F" itemLabel="F" />
+			</h:selectOneMenu>
+			<br />
+			<br />
+
+			<p:outputLabel value="Email: *" />
+			<br />
+			<p:inputText id="email" value="#{aluno.aluno.email}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo email é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Telefone: *" />
+			<br />
+			<p:inputText value="#{aluno.telefone.numero}" required="true"
+				requiredMessage="O campo telefone é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Profissão: *" />
+			<br />
+			<p:inputText id="profissao" value="#{aluno.aluno.profissao}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo profissão é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Turno: *" />
+			<br />
+			<p:inputText id="turno" value="#{aluno.aluno.turno}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo turno é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Naturalidade: *" />
+			<br />
+			<p:inputText id="naturalidade" value="#{aluno.aluno.naturalidade}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo naturalidade é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Nacionalidade: *" />
+			<br />
+			<p:inputText id="nacionalidade" value="#{aluno.aluno.nacionalidade}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo nacionalidade é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Estado: *" />
+			<br />
+			<p:inputText id="estado" value="#{aluno.endereco.estado}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo estado é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Cidade: *" />
+			<br />
+			<p:inputText id="cidade" value="#{aluno.endereco.cidade}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo cidade é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Bairro: *" />
+			<br />
+			<p:inputText id="bairro" value="#{aluno.endereco.bairro}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo bairro é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Rua: *" />
+			<br />
+			<p:inputText id="rua" value="#{aluno.endereco.rua}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo rua é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Complemento:" />
+			<br />
+			<p:inputText id="complemento" value="#{aluno.endereco.complemento}"
+				style="width:70%;" />
+			<br />
+			<br />
+
+			<p:outputLabel value="Número da Matrícula: *" />
+			<br />
+			<p:inputText id="numMatricula" value="#{aluno.ua.numMatricula}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo número da matrícula é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Data da Matrícula: *" />
+			<br />
+			<p:calendar pattern="dd/MM/yyyy" locale="pt" id="popupDataMatricula"
+				value="#{aluno.ua.dataMatricula}" style="width:70%;" required="true"
+				requiredMessage="O campo data da matrícula é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Dia de Pagamento: *" />
+			<br />
+			<p:inputText id="diaPagamento" value="#{aluno.ua.diaPagamento}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo dia de pagamento é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Situação de Pagamento: *" />
+			<br />
+			<p:inputText id="sitPagamento" value="#{aluno.ua.situacaoPagamento}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo situação de pagamento é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Pdf de Autorização de Responsável:" />
+			<br />
+			<p:fileUpload id="uploadScanAutorizacao"
+				fileUploadListener="#{aluno.uploadActionScanAutorizacao}"
+				mode="simple" skinSimple="true" />
+			<br />
+			<br />
+
+			<p:outputLabel value="Pdf de Avaliação Física:" />
+			<br />
+			<p:fileUpload id="uploadScanAVF"
+				fileUploadListener="#{aluno.uploadActionScanAvaliacaoF}"
+				mode="simple" skinSimple="true" />
+			<br />
+			<br />
+
+			<p:outputLabel value="Pdf de Questionário: *" />
+			<br />
+			<p:fileUpload id="uploadScanQuestionario"
+				fileUploadListener="#{aluno.uploadActionScanQuestionario}"
+				mode="simple" skinSimple="true" required="true"
+				requiredMessage="O campo pdf questionário é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Modalidade e Instrutor:" />
+			<br />
+			<h:selectOneMenu
+				value="#{aluno.instrutorModalidade.idInstrutorModalidade}">
+				<f:selectItems value="#{aluno.getTodosInstrutorModalidade()}"
+					var="im" itemLabel="#{im.modalidade.nome} - #{im.instrutor.nome}"
+					itemValue="#{im.idInstrutorModalidade}" />
+			</h:selectOneMenu>
+
+			<p:messages autoUpdate="true" closable="true" />
+
+			<br />
+			<br />
+			<p:commandButton value="Cadastrar"
+				actionListener="#{aluno.cadastrarAluno()}"
+				styleClass="ui-priority-primary" />
+		</p:panel>
+
+
+
+	</h:form>
+	<script>
+			
+				PrimeFaces.locales['pt'] = {  
+		                closeText: 'Fechar',  
+		                prevText: 'Anterior',  
+		                nextText: 'Próximo',  
+		                currentText: 'Começo',  
+		                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],  
+		                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],  
+		                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],  
+		                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],  
+		                dayNamesMin: ['D','S','T','Q','Q','S','S'],  
+		                weekHeader: 'Semana',  
+		                firstDay: 1,  
+		                isRTL: false,  
+		                showMonthAfterYear: false,  
+		                yearSuffix: '',  
+		                timeOnlyTitle: 'Só Horas',  
+		                timeText: 'Tempo',  
+		                hourText: 'Hora',  
+		                minuteText: 'Minuto',  
+		                secondText: 'Segundo',  
+		                currentText: 'Data Atual',  
+		                ampm: false,  
+		                month: 'Mês',  
+		                week: 'Semana',  
+		                day: 'Dia',  
+		                dateFormat: 'dd/mm/yy',
+		                allDayText : 'Todo Dia'  
+		            };
+				</script>
+</h:body>
+</html>

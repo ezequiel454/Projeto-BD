@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=SGAM;</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.connection.username">sa</property>
+		<property name="hibernate.connection.password">admin123</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<mapping class="models.InstrutorModalidadeAluno" />
+		<mapping class="models.Aluno" />
+		<mapping class="models.Acesso" />
+		<mapping class="models.Despesa" />
+		<mapping class="models.EnderecoPessoa" />
+		<mapping class="models.EnderecoUnidade" />
+		<mapping class="models.Instrutor" />
+		<mapping class="models.InstrutorModalidade" />
+		<mapping class="models.InstrutorModalidadeUnidade" />
+		<mapping class="models.LogAcesso" />
+		<mapping class="models.Modalidade" />
+		<mapping class="models.Pagamento" />
+		<mapping class="models.Pessoa" />
+		<mapping class="models.TelefonePessoa" />
+		<mapping class="models.TelefoneUnidade" />
+		<mapping class="models.Unidade" />
+		<mapping class="models.UnidadeAluno" />
+		<mapping class="models.UnidadeDespesa" />
+		<mapping class="models.UnidadeModalidade" />
+		<mapping class="models.UnidadeUsuario" />
+		<mapping class="models.Usuario" />
+		
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Relatório de Alunos por Tempo</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:graphicImage url="/resources/images/logo.png"
+			style="position: absolute;z-index: 2;top:10px;left:50px;width:300px; height:100px;" />
+		<h:graphicImage url="/resources/images/top.png"
+			style="width:100%; height:120px;z-index: 1;" />
+		<p:menubar>
+			<p:submenu label="Unidade">
+				<p:menuitem value="Cadastrar" url="cadastrarUnidade.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarUnidade.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Instrutor">
+				<p:menuitem value="Cadastrar" url="cadastrarInstrutor.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarInstrutor.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Modalidade">
+				<p:menuitem value="Cadastrar" url="cadastrarModalidade.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarModalidade.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Aluno">
+				<p:menuitem value="Cadastrar" url="cadastrarAluno.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarAluno.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Usuário">
+				<p:menuitem value="Cadastrar" url="cadastrarUsuario.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarUsuario.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Pagamento">
+				<p:menuitem value="Novo Pagamento" url="cadastrarPagamento.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Despesa">
+				<p:menuitem value="Cadastrar" url="cadastrarDespesa.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarDespesa.xhtml" />
+			</p:submenu>
+
+
+
+
+			<p:submenu label="Relatórios do Sistema">
+				<p:submenu label="Alunos">
+					<p:menuitem value="Por Modalidade"
+						url="relatorioAlunoModalidade.xhtml" />
+					<p:menuitem value="Por Tempo de Academia"
+						url="relatorioAlunoTempo.xhtml" />
+					<p:menuitem value="Com Avaliação Física"
+						url="#{aluno.gerarComAvaliacao()}" />
+					<p:menuitem value="Sem Avaliação Física"
+						url="#{aluno.gerarSemAvaliacao()}" />
+
+				</p:submenu>
+				<p:submenu label="Instrutores">
+					<p:menuitem value="Por Salário" url="#{instrutor.gerarInstrutor()}" />
+
+				</p:submenu>
+
+				<p:submenu label="Modalidades">
+					<p:menuitem value="Por Valor" url="#{modalidade.gerarModalidade()}" />
+				</p:submenu>
+
+				<p:submenu label="Gastos">
+					<p:menuitem value="Por Período de Tempo"
+						url="relatorioGastos.xhtml" />
+
+
+				</p:submenu>
+			</p:submenu>
+
+
+
+			<p:menuitem value="Histórico do Sistema" url="listarAcesso.xhtml" />
+			<p:menuitem value="Sair" url="login.xhtml" />
+		</p:menubar>
+
+		<br />
+
+
+		<br />
+		<br />
+		<p:panel id="relatorioAluno" header="Relatório de Alunos por Tempo"
+			style="margin-bottom:20px">
+
+			<p:outputLabel value="Escolha um Intervalo de Tempo:" />
+			<br />
+			<br />
+			<p:outputLabel value="Início:" />
+			<br />
+			<p:calendar pattern="dd/MM/yyyy" locale="pt" id="popupDataInicio"
+				value="#{aluno.dataInicio}" style="width:70%;" />
+			<br />
+			<br />
+
+			<p:outputLabel value="Fim:" />
+			<br />
+			<p:calendar pattern="dd/MM/yyyy" locale="pt" id="popupDataFim"
+				value="#{aluno.dataFim}" style="width:70%;" />
+			<br />
+			<br />
+
+
+			<p:commandButton value="Gerar Relatório"
+				actionListener="#{aluno.gerar()}" styleClass="ui-priority-primary" />
+		</p:panel>
+
+	</h:form>
+	<script>
+				PrimeFaces.locales['pt'] = {  
+		                closeText: 'Fechar',  
+		                prevText: 'Anterior',  
+		                nextText: 'Próximo',  
+		                currentText: 'Começo',  
+		                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],  
+		                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],  
+		                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],  
+		                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],  
+		                dayNamesMin: ['D','S','T','Q','Q','S','S'],  
+		                weekHeader: 'Semana',  
+		                firstDay: 1,  
+		                isRTL: false,  
+		                showMonthAfterYear: false,  
+		                yearSuffix: '',  
+		                timeOnlyTitle: 'Só Horas',  
+		                timeText: 'Tempo',  
+		                hourText: 'Hora',  
+		                minuteText: 'Minuto',  
+		                secondText: 'Segundo',  
+		                currentText: 'Data Atual',  
+		                ampm: false,  
+		                month: 'Mês',  
+		                week: 'Semana',  
+		                day: 'Dia',  
+		                dateFormat: 'dd/mm/yy',
+		                allDayText : 'Todo Dia'  
+		            };
+				</script>
+</h:body>
+</html>

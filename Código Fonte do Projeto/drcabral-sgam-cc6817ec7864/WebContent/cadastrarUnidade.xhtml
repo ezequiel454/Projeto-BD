@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Cadastrar Unidade</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:graphicImage url="/resources/images/logo.png"
+			style="position: absolute;z-index: 2;top:10px;left:50px;width:300px; height:100px;" />
+		<h:graphicImage url="/resources/images/top.png"
+			style="width:100%; height:120px;z-index: 1;" />
+		<p:menubar>
+			<p:submenu label="Unidade">
+				<p:menuitem value="Cadastrar" url="cadastrarUnidade.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarUnidade.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Instrutor">
+				<p:menuitem value="Cadastrar" url="cadastrarInstrutor.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarInstrutor.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Modalidade">
+				<p:menuitem value="Cadastrar" url="cadastrarModalidade.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarModalidade.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Aluno">
+				<p:menuitem value="Cadastrar" url="cadastrarAluno.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarAluno.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Usuário">
+				<p:menuitem value="Cadastrar" url="cadastrarUsuario.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarUsuario.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Pagamento">
+				<p:menuitem value="Novo Pagamento" url="cadastrarPagamento.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="Despesa">
+				<p:menuitem value="Cadastrar" url="cadastrarDespesa.xhtml" />
+				<p:separator />
+				<p:menuitem value="Listar" url="listarDespesa.xhtml" />
+			</p:submenu>
+
+
+
+			<p:submenu label="Relatórios do Sistema">
+				<p:submenu label="Alunos">
+					<p:menuitem value="Por Modalidade"
+						url="relatorioAlunoModalidade.xhtml" />
+					<p:menuitem value="Por Tempo de Academia"
+						url="relatorioAlunoTempo.xhtml" />
+					<p:menuitem value="Com Avaliação Física"
+						url="#{aluno.gerarComAvaliacao()}" />
+					<p:menuitem value="Sem Avaliação Física"
+						url="#{aluno.gerarSemAvaliacao()}" />
+
+				</p:submenu>
+				<p:submenu label="Instrutores">
+					<p:menuitem value="Por Salário" url="#{instrutor.gerarInstrutor()}" />
+
+				</p:submenu>
+
+				<p:submenu label="Modalidades">
+					<p:menuitem value="Por Valor" url="#{modalidade.gerarModalidade()}" />
+				</p:submenu>
+
+				<p:submenu label="Gastos">
+					<p:menuitem value="Por Período de Tempo"
+						url="relatorioGastos.xhtml" />
+
+
+				</p:submenu>
+			</p:submenu>
+
+
+
+			<p:menuitem value="Histórico do Sistema" url="listarAcesso.xhtml" />
+			<p:menuitem value="Sair" url="login.xhtml" />
+		</p:menubar>
+
+		<br />
+		<p:panel id="cadastrarUnidade" header="Cadastrar Unidade"
+			style="margin-bottom:20px">
+			<p:outputLabel value="Nome: *" />
+			<br />
+			<p:inputText id="nome" value="#{unidade.unidade.nome}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo nome é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="CNPJ: *" />
+			<br />
+			<p:inputText id="cnpj" value="#{unidade.unidade.cnpj}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo CNPJ é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Telefone: *" />
+			<br />
+			<p:inputText value="#{unidade.telefone.numero}" required="true"
+				requiredMessage="O campo telefone é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Estado: *" />
+			<br />
+			<p:inputText id="estado" value="#{unidade.endereco.estado}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo estado é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Cidade: *" />
+			<br />
+			<p:inputText id="cidade" value="#{unidade.endereco.cidade}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo cidade é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Bairro: *" />
+			<br />
+			<p:inputText id="bairro" value="#{unidade.endereco.bairro}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo bairro é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Rua: *" />
+			<br />
+			<p:inputText id="rua" value="#{unidade.endereco.rua}"
+				style="width:70%;" required="true"
+				requiredMessage="O campo rua é obrigatório." />
+			<br />
+			<br />
+
+			<p:outputLabel value="Complemento:" />
+			<br />
+			<p:inputText id="complemento" value="#{unidade.endereco.complemento}"
+				style="width:70%;" />
+
+
+			<p:messages autoUpdate="true" closable="true" />
+
+			<br />
+			<br />
+
+			<p:commandButton value="Cadastrar"
+				actionListener="#{unidade.cadastrarUnidade()}"
+				styleClass="ui-priority-primary" />
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

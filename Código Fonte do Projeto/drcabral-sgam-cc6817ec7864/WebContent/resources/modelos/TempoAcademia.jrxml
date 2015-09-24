@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report11" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="66ce42aa-2a48-4686-be4b-293cb59873f8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.awt.Image"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     *,
+     unidadeAluno."cpf" AS unidadeAluno_cpf,
+     unidadeAluno."nome" AS unidadeAluno_nome
+FROM
+     "unidadeAluno" unidadeAluno]]>
+	</queryString>
+	<field name="aluno.cpf" class="java.lang.String"/>
+	<field name="aluno.nome" class="java.lang.String"/>
+	<field name="aluno.email" class="java.lang.String"/>
+	<field name="dataMatricula" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="-20" width="595" height="117" backcolor="#006699" uuid="22be65ca-d85d-4c0e-bd61-052f525bd153"/>
+				<staticText>
+					<reportElement x="20" y="20" width="359" height="43" forecolor="#FFFFFF" uuid="fd7ba754-2c58-4731-b418-bd2181deb7d9"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Academia Akropoly's]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="291" y="83" width="285" height="20" forecolor="#FFFFFF" uuid="014287f6-d870-4cd9-a209-252092b42972"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Relatório de Alunos por Tempo na Academia]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="184" y="3" width="114" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="dcffa6b7-bfbe-47be-9b3f-99a76e47efe0"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cpf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="2" width="184" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="00845728-e5c5-4016-8c41-3315e66070cc"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="298" y="3" width="157" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5ac5d267-4aac-46f6-ba87-08c257193c2b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="455" y="3" width="100" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ef9bb653-94ac-4302-a831-d4c5c50bb23a"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Matricula]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22">
+			<textField>
+				<reportElement x="184" y="0" width="114" height="20" uuid="9cca08c6-8415-4c8b-bcc5-28f37ef351c4"/>
+				<textFieldExpression><![CDATA[$F{aluno.cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="184" height="20" uuid="c722554c-7003-41c1-8d24-e980e1e5908a"/>
+				<textFieldExpression><![CDATA[$F{aluno.nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="298" y="0" width="157" height="20" uuid="cb374094-3fc7-49cf-ab3c-4cd86b84f4d4"/>
+				<textFieldExpression><![CDATA[$F{aluno.email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="2" width="100" height="20" uuid="99b24355-3661-4d81-a2a9-2e92ea97a941"/>
+				<textFieldExpression><![CDATA[$F{dataMatricula}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="505" y="0" width="50" height="24" backcolor="#E6E6E6" uuid="8cea2316-a82f-42f6-99dc-9356f235852f"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="505" height="24" backcolor="#E6E6E6" uuid="be1ed698-717d-4cbd-a938-48c02af0a697"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="113" height="14" uuid="f7552e17-2b30-4697-95b8-9a2be7806b0c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+	<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"> 
+		<h:head> 
+			<title>SGAM - Login</title> 
+		</h:head> 
+		<h:body> 
+			<h:form>	
+				<p:panel id="login" header="Acessar SGAM" style="margin-bottom:20px">
+					<br/>
+					<p:outputLabel value="Login:"/>
+					<br/>
+					<p:inputText id="loginUsu" value="#{login.usuario.login}" style="width:70%;"/>
+					<p:message for="loginUsu" display="text"/>
+					<br/>
+					<p:outputLabel value="Senha:"/>
+					<br/>
+					<p:inputText type="password" id="senha" value="#{login.usuario.senha}" style="width:70%;"/>
+					<p:message for="senha" display="text"/>
+					<br/>
+					<br/>
+					<p:outputLabel value="Unidade:"/>
+					<br/>
+		            <h:selectOneMenu value="#{login.nomeUnidade}">
+		           		 <f:selectItems value="#{login.getTodasUnidades()}" var="u"
+		                    itemLabel="#{u.nome}" itemValue="#{u.nome}" />
+		            </h:selectOneMenu>
+					
+					<p:commandButton value="Entrar" actionListener="#{login.fazerLogin()}" styleClass="ui-priority-primary"/>
+				</p:panel>
+			</h:form>
+		</h:body> 
+	</html>
